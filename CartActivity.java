@@ -1,5 +1,6 @@
 package agarwal.shashwat.ecommerce;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -31,12 +32,22 @@ public class CartActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        findViewById(R.id.proceedToCheckout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),checkout.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
         recyclerView=findViewById(R.id.recyclerviewCart);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //recyclerView.setHasFixedSize(true);
 
         adapter=new CartAdapter(this);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
             productViewModel =new ViewModelProvider(this, new ProductViewModelFactory(getApplication())).get(ProductViewModel.class);
             productViewModel.getAllProducts().observe(this, new Observer<List<Product>>() {
@@ -58,7 +69,8 @@ public class CartActivity extends AppCompatActivity {
                public void onUpdateClick(int position, int count) {
                    if (count!=0) {
                        Product product = adapter.getProductAt(position);
-                       product.setProductPrice(count * adapter.getProductAt(position).getProductPrice());
+                       product.setUserQuantity(count);
+                       product.setUserPrice(count * product.getProductPrice());
                        productViewModel.update(product);
                        adapter.notifyDataSetChanged();
                    }else {

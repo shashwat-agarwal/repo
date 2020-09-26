@@ -155,13 +155,30 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onUpdateClick(int position, int count) {
+            public void onUpdateClick(DocumentSnapshot documentSnapshot, int count) {
 
+                Product product=documentSnapshot.toObject(Product.class);
+                Log.d("Myproductname", product.getProductName());
+                Log.d("MYproductprice",""+ product.getProductPrice());
+                Log.d("MYUserPrice", ""+product.getUserPrice());
+                Log.d("MYproductid", ""+product.getId());
+                product.setUserQuantity(count);
+                product.setUserPrice(count*product.getProductPrice());
+                Log.d("MyproductnameAFTER", product.getProductName());
+                Log.d("MYproductpriceAFTER",""+ product.getProductPrice());
+                Log.d("MYUserPriceAFTER", ""+product.getUserPrice());
+                Log.d("MYproductidAFTER", ""+product.getId());
+                Log.d("MYpdtuserQuantityAFTER", ""+product.getUserQuantity());
+                productViewModel.update(product);
             }
 
             @Override
             public void onDeleteClick(DocumentSnapshot documentSnapshot, int position) {
                 Product product=documentSnapshot.toObject(Product.class);
+                Log.d("Myproductname", product.getProductName());
+                Log.d("MYproductprice",""+ product.getProductPrice());
+                Log.d("MYUserPrice", ""+product.getUserPrice());
+                Log.d("MYproductid", ""+product.getId());
                 productViewModel.delete(product);
 
                 Log.d(TAG, "onDeleteClick: deleted");
@@ -218,8 +235,21 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onUpdateClick(int position, int count) {
+            public void onUpdateClick(DocumentSnapshot documentSnapshot, int count) {
 
+                Product product=documentSnapshot.toObject(Product.class);
+                Log.d("Myproductname", product.getProductName());
+                Log.d("MYproductprice",""+ product.getProductPrice());
+                Log.d("MYUserPrice", ""+product.getUserPrice());
+                Log.d("MYproductid", ""+product.getId());
+                product.setUserQuantity(count);
+                product.setUserPrice(count*product.getProductPrice());
+                Log.d("MyproductnameAFTER", product.getProductName());
+                Log.d("MYproductpriceAFTER",""+ product.getProductPrice());
+                Log.d("MYUserPriceAFTER", ""+product.getUserPrice());
+                Log.d("MYproductidAFTER", ""+product.getId());
+                Log.d("MYpdtuserQuantityAFTER", ""+product.getUserQuantity());
+                productViewModel.update(product);
             }
 
             @Override
@@ -278,9 +308,24 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onUpdateClick(int position, int count) {
+            public void onUpdateClick(DocumentSnapshot documentSnapshot, int count) {
 
+                Product product=documentSnapshot.toObject(Product.class);
+                Log.d("Myproductname", product.getProductName());
+                Log.d("MYproductprice",""+ product.getProductPrice());
+                Log.d("MYUserPrice", ""+product.getUserPrice());
+                Log.d("MYproductid", ""+product.getId());
+                product.setUserQuantity(count);
+                product.setUserPrice(count*product.getProductPrice());
+                Log.d("MyproductnameAFTER", product.getProductName());
+                Log.d("MYproductpriceAFTER",""+ product.getProductPrice());
+                Log.d("MYUserPriceAFTER", ""+product.getUserPrice());
+                Log.d("MYproductidAFTER", ""+product.getId());
+                Log.d("MYpdtuserQuantityAFTER", ""+product.getUserQuantity());
+                productViewModel.update(product);
             }
+
+
 
             @Override
             public void onDeleteClick(DocumentSnapshot documentSnapshot, int position) {

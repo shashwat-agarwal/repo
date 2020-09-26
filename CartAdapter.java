@@ -42,8 +42,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewHolder> {
         Product currProduct=products.get(position);
         holder.name.setText(currProduct.getProductName());
         holder.quantity.setText(currProduct.getProductQuantity());
-        holder.price.setText(String.valueOf(currProduct.getProductPrice()));
-        Glide.with(context).load(currProduct.getProductImage()).into(holder.image);
+        holder.price.setText(String.valueOf(currProduct.getUserPrice()));
+        Glide.with(context).load(currProduct.getProductImage()).placeholder(R.drawable.placeholder).into(holder.image);
     }
 
     @Override

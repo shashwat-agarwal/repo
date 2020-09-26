@@ -105,7 +105,7 @@ public class horizontalProductScrollAdapter extends FirestoreRecyclerAdapter<hor
                             addProduct.setVisibility(View.VISIBLE);
                             listener.onDeleteClick(getSnapshots().getSnapshot(position),position);
                         } else
-                            listener.onUpdateClick(position, count);
+                            listener.onUpdateClick(getSnapshots().getSnapshot(position), count);
                     }
                 }
             });
@@ -117,7 +117,7 @@ public class horizontalProductScrollAdapter extends FirestoreRecyclerAdapter<hor
     public interface OnItemClickListener {
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
 
-        void onUpdateClick(int position, int count);
+        void onUpdateClick(DocumentSnapshot documentSnapshot, int count);
 
         void onDeleteClick(DocumentSnapshot documentSnapshot,int position);
     }

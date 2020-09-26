@@ -24,6 +24,9 @@ public interface ProductDao {
     @Query("DELETE FROM product_table")
     void deleteAllProducts();
 
+    @Query("SELECT COUNT(id) FROM product_table WHERE productName LIKE :name")
+    LiveData<Integer> getIngredientsWithNameCount(String name);
+
     @Query("UPDATE product_table SET userQuantity = :userQuantity,userPrice= :userPrice  WHERE productName= :name")
     void updateQuantity(String name,long userQuantity,long userPrice);
 

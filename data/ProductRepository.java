@@ -29,7 +29,7 @@ public class ProductRepository {
         new DeleteProductAsyncTask(productDao).execute(product);
     }
     public void updateQuantity(String name,long userQuantity,long userPrice){
-        new UpdateQuantityProductAsyncTask(productDao);
+        new UpdateQuantityProductAsyncTask(productDao).execute();
     }
     public void deleteAllProducts(){
         new DeleteAllProductsAsyncTask(productDao).execute();
@@ -37,6 +37,10 @@ public class ProductRepository {
 
     public LiveData<List<Product>> getAllProducts() {
         return allProducts;
+    }
+
+    public LiveData<Integer> getIngredientsWithNameCount(String name) {
+        return productDao.getIngredientsWithNameCount(name);
     }
 
     private static class InsertProductAsyncTask extends AsyncTask<Product,Void,Void>{

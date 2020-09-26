@@ -3,7 +3,7 @@ package agarwal.shashwat.ecommerce.data;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "product_table")
+ @Entity(tableName = "product_table")
 public class Product {
 
     @PrimaryKey(autoGenerate = true)
